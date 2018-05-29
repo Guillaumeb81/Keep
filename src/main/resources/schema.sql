@@ -1,4 +1,10 @@
 
+
+-- supprime les bd existantes quand on relance le server
+DROP TABLE IF EXISTS STORY;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS authorities;
+
 CREATE TABLE STORY (
   ID      INT primary key auto_increment,
   CONTENT VARCHAR(144)
