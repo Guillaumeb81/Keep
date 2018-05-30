@@ -1,6 +1,7 @@
 package com.polytech.persistence;
 
 import com.polytech.services.Story;
+import com.polytech.services.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -11,6 +12,9 @@ import java.util.List;
 public class JdbcStoryRepository implements StoryRepository {
 
     private JdbcTemplate jdbcTemplate;
+
+
+    //
 
     public JdbcStoryRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -35,4 +39,27 @@ public class JdbcStoryRepository implements StoryRepository {
             return new Story(content);
         }
     }
+
+    public void modify(Story story) {
+        String query = "UPDATE STORY SET CONTENT = "+ story.getContent() + " WHERE ID=" + story.getId();
+        jdbcTemplate.update(query, story.getContent());
+    }
+
+    public void supprimme(int id){
+        String query = "DELETE FROM STORY WHERE ID = ?";
+        jdbcTemplate.update(query, id);
+    }
+
+
+    public void saveUser(User user) {
+        String query = "INSERT INTO users (CONTENT)VALUES('"+ user.getUsername() +"','"+ user.getPassword() +"',true)";
+        jdbcTemplate.update(query);
+    }
+
+    public boolean findUser(User user) {
+        String query = "SELECT * FROM Users WHERE username='"+ user.getUsername() +"' AND  password='"+ user.getPassword() +"'";
+        return jdbcTemplate.query(query, new StoryMapper()) == null;
+    }
+
+
 }

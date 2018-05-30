@@ -27,3 +27,4 @@ create unique index ix_auth_username
 -- create user
 INSERT INTO users values ('zeros', '$2a$10$rFFfK7IX48.M6cY9zH4bkugjlfux0LUBkqXHlwHH13GH9AA4fuvcm', true);
 insert into authorities values ('zeros', 'ADMIN');
+
