@@ -6,9 +6,20 @@ package com.polytech.services;
 public class User {
     private String username;
     private String password;
+    private boolean enabled = true;
 
-    public User(String username, String password) {
-        this.username = username;
+
+    public User() {}
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -20,11 +31,11 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

@@ -21,22 +21,6 @@
             padding: 40px 15px;
             text-align: center;
         }
-
-        .bouton{
-            display: inline;
-        }
-        .containerButton{
-            display: inline-block;
-        }
-        .list-group-item{
-            float: left;
-            margin: 10px;
-            background-color: #4b93f7;
-        }
-        span{
-            border: 5px;
-            padding: 10px;
-        }
     </style>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -63,7 +47,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
                 <li class="active"><a href="/feed">Post-it</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/register">Sign up</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -71,39 +55,18 @@
 
 <div class="container">
     <div class="starter-template">
-        <div class="row">
-            <form action="/share" method="post" role="form">
-                <legend>Create your post-it</legend>
-                <div class="form-group">
-                    <textarea class="form-control" name="content" id="" placeholder="What's on your mind today ?"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary pull-right">Share</button>
-            </form>
-        </div>
 
-        <div class="row">
-            <ul class="list-group col-md-12">
-                <li class="list-group-item col-lg-4" th:each="story :${stories}">
-                    <div class="row">
-                        <span th:text="${story.content}"></span>
-                    </div>
-                    <div class="containerButton row" >
-                        <form action="/setContent" method="post" role="form" class="col-lg-4">
-                            <input type="hidden" name="content" th:value="${story.content}"/>
-                            <button type="submit" class="btn btn-info  "><i class="glyphicon glyphicon-pencil"></i></button>
-                        </form>
-                        <form action="/delete" method="post" role="form" class="col-lg-4">
-                            <input type="hidden" name="content" th:value="${story.content}"/>
-                            <button type="submit" class="btn btn-danger  "><i class="glyphicon glyphicon-trash"></i></button>
-                        </form>
-                    </div>
+    <div id="ModifyArea">
+        <form action="/modify" method="post" role="form">
+            <legend>Edit your post-it ...</legend>
 
-
-                </li>
-            </ul>
-        </div>
+            <div class="form-group">
+                <textarea class="form-control" name="newContent" id="" placeholder="What do you want to change?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">OK</button>
+        </form>
     </div>
-
+    </div>
 </div><!-- /.container -->
 
 <!-- Bootstrap core JavaScript
